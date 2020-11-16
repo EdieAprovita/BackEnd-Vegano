@@ -44,6 +44,13 @@ app.use('/products', product)
 const index = require('./routes/index')
 app.use('/', index)
 
+const upload = require('./routes/uploadRoutes')
+app.use('/api/upload', upload)
+
+const { notFound, errorHandler } = require('./middleware/errorMiddleware')
+app.use(notFound)
+app.use(errorHandler)
+
 // Uncomment this line for production
 // app.get('/*', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
