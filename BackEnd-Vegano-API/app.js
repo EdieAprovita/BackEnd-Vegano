@@ -10,8 +10,8 @@ const cors = require('cors')
 const colors = require('colors')
 
 mongoose
-	.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`.blue.bold))
+	.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`.cyan.underline))
 	.catch((err) => console.error('Error connecting to mongo', err))
 
 const app_name = require('./package.json').name
@@ -31,6 +31,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(logger('dev'))
+
+const user = require('./routes/userRoutes')
+app.use('/api/users', user)
+
+const order = require('./routes/orderRoutes')
+app.use('/api/orders', order)
+
+const product = require('./routes/productRoutes')
+app.use('/products', product)
 
 const index = require('./routes/index')
 app.use('/', index)
