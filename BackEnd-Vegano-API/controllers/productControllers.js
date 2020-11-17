@@ -38,9 +38,6 @@ exports.getProductById = asyncHandler(async (req, res) => {
 
 		if (product) {
 			res.status(200).json(product)
-		} else {
-			res.status(404)
-			throw new Error('Product not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -57,9 +54,6 @@ exports.deleteProduct = asyncHandler(async (req, res) => {
 		if (product) {
 			await product.remove()
 			res.json({ message: 'Product removed' })
-		} else {
-			res.status(404)
-			throw new Error('Product not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -110,9 +104,6 @@ exports.updateProduct = asyncHandler(async (req, res) => {
 
 			const updatedProduct = await product.save()
 			res.json(updatedProduct)
-		} else {
-			res.status(404)
-			throw new Error('Product not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -151,9 +142,6 @@ exports.createProductReview = asyncHandler(async (req, res) => {
 
 			await product.save()
 			res.status(201).json({ message: 'Review added' })
-		} else {
-			res.status(404)
-			throw new Error('Product not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })

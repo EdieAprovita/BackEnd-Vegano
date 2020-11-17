@@ -19,9 +19,6 @@ exports.authUser = asyncHandler(async (req, res) => {
 				isAdmin: user.isAdmin,
 				token: generateToken(user._id),
 			})
-		} else {
-			res.status(401)
-			throw new Error('Invalid email or password')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -56,9 +53,6 @@ exports.registerUser = asyncHandler(async (req, res) => {
 				isAdmin: user.isAdmin,
 				token: generateToken(user._id),
 			})
-		} else {
-			res.status(400)
-			throw new Error('Invalid user data')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -79,9 +73,6 @@ exports.getUserProfile = asyncHandler(async (req, res) => {
 				email: user.email,
 				isAdmin: user.isAdmin,
 			})
-		} else {
-			res.status(404)
-			throw new Error('User not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -111,9 +102,6 @@ exports.updateUserProfile = asyncHandler(async (req, res) => {
 				isAdmin: updatedUser.isAdmin,
 				token: generateToken(updatedUser._id),
 			})
-		} else {
-			res.status(404)
-			throw new Error('User not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -142,9 +130,6 @@ exports.deleteUser = asyncHandler(async (req, res) => {
 		if (user) {
 			await user.remove()
 			res.json({ message: 'User removed' })
-		} else {
-			res.status(404)
-			throw new Error('User not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -160,9 +145,6 @@ exports.getUserById = asyncHandler(async (req, res) => {
 
 		if (user) {
 			res.json(user)
-		} else {
-			res.status(404)
-			throw new Error('User not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -189,9 +171,6 @@ exports.updateUser = asyncHandler(async (req, res) => {
 				email: updatedUser.email,
 				isAdmin: updatedUser.isAdmin,
 			})
-		} else {
-			res.status(404)
-			throw new Error('User not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })

@@ -12,7 +12,7 @@ const colors = require('colors')
 mongoose
 	.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 	.then((x) => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`.cyan.underline))
-	.catch((err) => console.error('Error connecting to mongo', err))
+	.catch((err) => console.error('Error connecting to mongo'.red.bold, err))
 
 const app_name = require('./package.json').name
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`)
@@ -39,7 +39,7 @@ const order = require('./routes/orderRoutes')
 app.use('/api/orders', order)
 
 const product = require('./routes/productRoutes')
-app.use('/products', product)
+app.use('/api/products', product)
 
 const index = require('./routes/index')
 app.use('/', index)

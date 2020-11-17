@@ -42,9 +42,6 @@ exports.getOrderById = asyncHandler(async (req, res) => {
 
 		if (order) {
 			res.json(order)
-		} else {
-			res.status(404)
-			throw new Error('Order not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -71,9 +68,6 @@ exports.updateOrderToPaid = asyncHandler(async (req, res) => {
 			const updatedOrder = await order.save()
 
 			res.json(updatedOrder)
-		} else {
-			res.status(404)
-			throw new Error('Order not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
@@ -94,9 +88,6 @@ exports.updateOrderToDelivered = asyncHandler(async (req, res) => {
 			const updatedOrder = await order.save()
 
 			res.json(updatedOrder)
-		} else {
-			res.status(404)
-			throw new Error('Order not found')
 		}
 	} catch (error) {
 		res.status(400).json({ message: `${error}` })
