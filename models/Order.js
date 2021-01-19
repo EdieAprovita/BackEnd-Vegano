@@ -33,7 +33,7 @@ const orderSchena = new Schema(
 
 				product: {
 					type: mongoose.Schema.Types.ObjectId,
-					required: [true, 'Add the product'],
+					required: true,
 					ref: 'Product',
 				},
 			},

@@ -43,22 +43,22 @@ const productSchema = new Schema(
 
 		image: {
 			type: String,
-			required: true,
+			required: [true, "Please add a picture"],
 		},
 
 		brand: {
 			type: String,
-			required: true,
+			required: [true, "Add a brand"],
 		},
 
 		category: {
 			type: String,
-			required: true,
+			required: [true,"Add a category"],
 		},
 
 		description: {
 			type: String,
-			required: true,
+			required: [true,"Please add a description"],
 		},
 
 		reviews: [reviewSchema],
