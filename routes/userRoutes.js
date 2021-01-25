@@ -1,12 +1,26 @@
-const router = require('express').Router()
+const authroutes = require('express').Router()
 
-const { authUser, registerUser, getUserProfile, updateUserProfile, getUsers, deleteUser, getUserById, updateUser } = require('../controllers/userControllers')
+const {
+	authUser,
+	registerUser,
+	getUserProfile,
+	updateUserProfile,
+	getUsers,
+	deleteUser,
+	getUserById,
+	updateUser,
+} = require('../controllers/userControllers')
 
 const { protect, admin } = require('../middleware/authMiddleware')
 
-router.route('/').post(registerUser).get(protect, admin, getUsers)
-router.post('/login', authUser)
-router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile)
-router.route('/:id').delete(protect, admin, deleteUser).get(protect, admin, getUserById).put(protect, admin, updateUser)
+//USER ROUTES
 
-module.exports = router
+authroutes.get('/', (protect, getUsers))
+authroutes.get('/profile', (protect, getUserProfile))
+authroutes.get('/:id', (protect, getUserById))
+authroutes.post('/', registerUser)
+authroutes.post('/login', authUser)
+authroutes.put('/profile', (protect, updateUserProfile))
+authroutes.put('/:id', (protect, updateUser))
+authroutes.delete('/:id', (protect, deleteUser))
+module.exports = authroutes
