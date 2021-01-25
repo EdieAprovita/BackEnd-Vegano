@@ -25,7 +25,7 @@ const reviewSchema = new Schema(
 	},
 	{
 		timestamps: true,
-	},
+	}
 )
 
 const productSchema = new Schema(
@@ -43,22 +43,22 @@ const productSchema = new Schema(
 
 		image: {
 			type: String,
-			required: [true, "Please add a picture"],
+			required: [true, 'Please add a picture'],
 		},
 
 		brand: {
 			type: String,
-			required: [true, "Add a brand"],
+			required: [true, 'Add a brand'],
 		},
 
 		category: {
 			type: String,
-			required: [true,"Add a category"],
+			required: [true, 'Add a category'],
 		},
 
 		description: {
 			type: String,
-			required: [true,"Please add a description"],
+			required: [true, 'Please add a description'],
 		},
 
 		reviews: [reviewSchema],
@@ -90,7 +90,7 @@ const productSchema = new Schema(
 
 	{
 		timestamps: true,
-	},
+	}
 )
 
 const Product = mongoose.model('Product', productSchema)

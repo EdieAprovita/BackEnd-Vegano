@@ -1,6 +1,13 @@
 const router = require('express').Router()
 
-const { addOrderItems, getOrderById, updateOrderToPaid, updateOrderToDelivered, getMyOrders, getOrders } = require('../controllers/orderControllers')
+const {
+	addOrderItems,
+	getOrderById,
+	updateOrderToPaid,
+	updateOrderToDelivered,
+	getMyOrders,
+	getOrders,
+} = require('../controllers/orderControllers')
 
 const { protect, admin } = require('../middleware/authMiddleware')
 
