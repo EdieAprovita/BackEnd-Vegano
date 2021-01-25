@@ -17,9 +17,9 @@ const { protect, admin } = require('../middleware/authMiddleware')
 router.get('/', getProducts)
 router.get('/top', getTopProducts)
 router.get('/:id', getProductById)
-router.post('/create', (protect, createProduct))
+router.post('/create', (protect, admin, createProduct))
 router.post('/:id/reviews', (protect, createProductReview))
-router.put('/edit/:id', (protect, updateProduct))
-router.delete('/delete/:id', (protect, deleteProduct))
+router.put('/edit/:id', (protect, admin, updateProduct))
+router.delete('/delete/:id', (protect, admin, deleteProduct))
 
 module.exports = router
