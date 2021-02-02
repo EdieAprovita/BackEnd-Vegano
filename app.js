@@ -66,6 +66,6 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 app.use(notFound)
 app.use(errorHandler)
 
-app.get('/*', (req, res) => res.sendFile(__dirname + '/public/index.html'))
+//app.get('/*', (req, res) => res.sendFile(__dirname + '/public/index.html'))
 
 module.exports = app
